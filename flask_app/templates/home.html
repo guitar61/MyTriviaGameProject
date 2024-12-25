@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <div class="card shadow-lg" style="max-width: 600px; margin: 0 auto; background-color: #f8f9fa; border-radius: 15px;">
+        <div class="card-body">
+            <h1 class="card-title mb-4">Welcome to the Trivia Game!</h1>
+            <p class="card-text text-muted mb-4" style="font-size: 1.2rem;">
+                Test your knowledge in various categories and compete for the top score.
+            </p>
+            <div class="d-grid gap-3">
+                <a href="{{ url_for('categories') }}" class="btn btn-primary btn-lg px-4">Start Playing</a>
+                <a href="{{ url_for('leaderboard') }}" class="btn btn-success btn-lg px-4">View Leaderboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

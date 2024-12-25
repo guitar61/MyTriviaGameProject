@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Leaderboard</h2>
+                <p class="lead text-white">See the top scores and challenge yourself!</p>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr class="text-center">
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>Total Score (%)</th>
+                            <th>Games Played</th>
+                            <th>Highest Score (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for player in leaderboard %}
+                        <tr class="text-center">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ player.player|safe }}</td>
+                            <td>{{ player.total_score|safe }}%</td>
+                            <td>{{ player.games_played|safe }}</td>
+                            <td>{{ player.highest_score|safe }}%</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No players found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'home' %}" class="btn btn-primary btn-lg">🏠 Return to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

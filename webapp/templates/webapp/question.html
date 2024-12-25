@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Trivia Question</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card mx-auto shadow-lg" style="max-width: 40rem;">
+            <div class="card-body">
+                <!-- Question Progress -->
+                <h5 class="card-title text-center">
+                    Question {{ current_index }} of {{ total_questions }}
+                </h5>
+
+                <!-- Question Text -->
+                <p class="card-text lead text-center mt-4">{{ question_text|safe }}</p>
+
+                <!-- Answers as Buttons -->
+                <form method="POST" action="{% url 'check_answer' %}" class="mt-4">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2">
+                        {% for answer in answers %}
+                            <button type="submit" name="answer" value="{{ answer }}" class="btn btn-primary btn-lg">
+                                {{ answer }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
